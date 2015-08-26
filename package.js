@@ -11,8 +11,13 @@ Package.onUse(function (api) {
     api.versionsFrom('1.1.0.3');
     api.use('universe:modules@0.4.1');
     api.addFiles([
+        //mixins
         'mixins/autorun.import.jsx',
         'mixins/dualLink.import.jsx',
+        //helpers
+        'helpers/classnames.import.jsx',
+        'helpers/execution-environment.import.jsx',
+        //index
         'index.import.js',
         'index.js'
     ]);
