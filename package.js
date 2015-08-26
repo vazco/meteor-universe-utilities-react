@@ -2,9 +2,9 @@ Package.describe({
     name: 'universe:utilities-react',
     version: '0.1.0',
     // Brief, one-line summary of the package.
-    summary: '',
+    summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
-    git: ''
+    git: 'https://github.com/vazco/meteor-universe-utilities-react'
 });
 
 Package.onUse(function (api) {
