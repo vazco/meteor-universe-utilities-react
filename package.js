@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '0.1.2',
+    version: '0.1.3',
     // Brief, one-line summary of the package.
     summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
@@ -17,6 +17,8 @@ Package.onUse(function (api) {
         //helpers
         'helpers/classnames.import.jsx',
         'helpers/execution-environment.import.jsx',
+        'helpers/object-assign.import.jsx',
+        'helpers/react-clonewithprops.import.jsx',
         //index
         'index.import.js',
         'index.js'
