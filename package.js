@@ -19,6 +19,7 @@ Package.onUse(function (api) {
         'helpers/execution-environment.import.jsx',
         'helpers/object-assign.import.jsx',
         'helpers/react-clonewithprops.import.jsx',
+        'helpers/deep-equal.import.jsx',
         //index
         'index.import.js',
         'index.js'
