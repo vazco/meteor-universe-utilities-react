@@ -73,7 +73,7 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo 
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1' 
 ```
 
-<small>- based on [jquense/react-clonewithprops](https://github.com/jquense/react-clonewithprops)</small>
+*- based on [JedWatson/classnames](ithub.com/JedWatson/classnames)*
 
 ### deepEqual
 
