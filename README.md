@@ -10,13 +10,16 @@ import {AutorunMixin} from '{universe:utilities-react}';
 export default React.createClass({
     displayName: 'ProfilesList',
     mixins: [AutorunMixin],
-    autorunCursor () {
-        this.setState({
-            cursor: UniUsers.find()
-        });
+    autorunA () {
+        Meteor.subscribe('users', () => this.setState(isReady: true));
     },
+    autorunB () {
+            this.setState({
+                users: Meteor.users.find().fetch()
+            });
+        },
     render () {
-        return <ProfilesList cursor={this.state.cursor}/>;
+        return <ProfilesList users={this.state.users}/>;
     }
 });
 ```
