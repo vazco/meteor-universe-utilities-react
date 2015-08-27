@@ -139,6 +139,7 @@ objectAssign({foo: 0}, null, {bar: 1}, undefined);
 ```
 
 **objectAssign(target, source, [source, ...])**
+
 Assigns enumerable own properties of source objects to the target object and returns the target object. Additional source objects will overwrite previous ones.
 
 - more here: ES6 spec - [Object.assign](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign)
