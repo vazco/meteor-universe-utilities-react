@@ -73,6 +73,8 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo 
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1' 
 ```
 
+*- based on [jquense/react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
+
 ### deepEqual
 
 Node's assert.deepEqual() algorithm as a standalone module.
@@ -97,6 +99,8 @@ console.dir([
 Compare objects a and b, returning whether they are equal according to a recursive equality algorithm.
 
 If opts.strict is true, use strict equality (===) to compare leaf nodes. The default is to use coercive equality (==) because that's how assert.deepEqual() works by default.
+
+*- based on [substack/node-deep-equal](https://github.com/substack/node-deep-equal)*
 
 ### executionEnvironment
 
@@ -139,6 +143,8 @@ Assigns enumerable own properties of source objects to the target object and ret
 
 - more here: ES6 spec - [Object.assign](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign)
 
+*- based on [sindresorhus/object-assign](https://github.com/sindresorhus/object-assign)*
+
 ### cloneWithProps
 
 Stand-alone React cloneWithProps util that works with multiple versions of React
@@ -149,3 +155,5 @@ cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 ```
 
 *This is tested with React 0.9 to 0.13, and adds a trivial amount of code to get everything to work.*
+
+*- based on [react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
