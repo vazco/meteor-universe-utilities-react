@@ -78,7 +78,7 @@ class DualLink {
         }
 
         // return whole object
-        return _({}).extend(this.getRemote(), this.getLocal());
+        return $.extend(true, {}, this.getRemote(), this.getLocal());
     }
 
     isEmpty () {
