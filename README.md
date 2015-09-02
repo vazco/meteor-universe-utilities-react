@@ -159,8 +159,7 @@ cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 
 *- based on [react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
 
-deepExtend
------
+### deepExtend
 
 ```javascript
 import {deepExtend} from '{universe:utilities-react}';
