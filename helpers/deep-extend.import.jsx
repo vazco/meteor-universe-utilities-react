@@ -25,16 +25,18 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+var isBuffer = typeof Buffer !== 'undefined';
+
 function isSpecificValue(val) {
-	return (
-		val instanceof Buffer
+	return !!(
+		(isBuffer && val instanceof Buffer)
 		|| val instanceof Date
 		|| val instanceof RegExp
-	) ? true : false;
+	);
 }
 
 function cloneSpecificValue(val) {
-	if (val instanceof Buffer) {
+	if (isBuffer && val instanceof Buffer) {
 		var x = new Buffer(val.length);
 		val.copy(x);
 		return x;

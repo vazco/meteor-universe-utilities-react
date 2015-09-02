@@ -20,7 +20,7 @@ Package.onUse(function (api) {
         'helpers/object-assign.import.jsx',
         'helpers/react-clonewithprops.import.jsx',
         'helpers/deep-equal.import.jsx',
-        'helpers/deep-extend.import.jsx'
+        'helpers/deep-extend.import.jsx',
         //index
         'index.import.js',
         'index.js'

@@ -161,6 +161,8 @@ cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 
 ### deepExtend
 
+Recursive object extending.
+
 ```javascript
 import {deepExtend} from '{universe:utilities-react}';
 var obj1 = {
@@ -210,3 +212,5 @@ console.log(obj1);
   j: [3, 4] }
 */
 ```
+
+*- based on [unclechu/node-deep-extend](https://github.com/unclechu/node-deep-extend)*
