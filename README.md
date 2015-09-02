@@ -159,7 +159,7 @@ cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 
 *- based on [react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
 
-Usage
+deepExtend
 -----
 
 ```javascript
