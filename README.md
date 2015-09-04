@@ -52,6 +52,30 @@ export React.createClass({
 });
 ```
 
+### SubscriptionMixin
+
+```js
+import {AutorunMixin, SubscriptionMixin} from '{universe:utilities-react}';
+
+export default React.createClass({
+    displayName: 'ProfilesList',
+    mixins: [SubscriptionMixin, AutorunMixin],
+    autorunA () {
+        this.subscribe('users');
+        this.setState({
+            users: Meteor.users.find().fetch()
+        });
+    },
+    render () {
+        if (!this.subscriptionsReady()) {
+            return <div>Loading...</div>;
+        }
+
+        return <ProfilesList users={this.state.users}/>;
+    }
+});
+```
+
 ## Helpers
 
 ### classNames
@@ -61,16 +85,16 @@ A simple utility for conditionally joining classNames together
 ```js
 import {classNames} from '{universe:utilities-react}';
 
-classNames('foo', 'bar'); // => 'foo bar' 
-classNames('foo', { bar: true }); // => 'foo bar' 
-classNames({ foo: true }, { bar: true }); // => 'foo bar' 
-classNames({ foo: true, bar: true }); // => 'foo bar' 
- 
-// lots of arguments of various types 
-classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo bar baz quux' 
- 
-// other falsy values are just ignored 
-classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1' 
+classNames('foo', 'bar'); // => 'foo bar'
+classNames('foo', { bar: true }); // => 'foo bar'
+classNames({ foo: true }, { bar: true }); // => 'foo bar'
+classNames({ foo: true, bar: true }); // => 'foo bar'
+
+// lots of arguments of various types
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo bar baz quux'
+
+// other falsy values are just ignored
+classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 ```
 
 *- based on [JedWatson/classnames](ithub.com/JedWatson/classnames)*
@@ -123,19 +147,19 @@ Ponyfill: A polyfill that doesn't overwrite the native method
 ```js
 import {objectAssign} from '{universe:utilities-react}';
 objectAssign({foo: 0}, {bar: 1});
-//=> {foo: 0, bar: 1} 
- 
-// multiple sources 
+//=> {foo: 0, bar: 1}
+
+// multiple sources
 objectAssign({foo: 0}, {bar: 1}, {baz: 2});
-//=> {foo: 0, bar: 1, baz: 2} 
- 
-// overwrites equal keys 
+//=> {foo: 0, bar: 1, baz: 2}
+
+// overwrites equal keys
 objectAssign({foo: 0}, {foo: 1}, {foo: 2});
-//=> {foo: 2} 
- 
-// ignores null and undefined sources 
+//=> {foo: 2}
+
+// ignores null and undefined sources
 objectAssign({foo: 0}, null, {bar: 1}, undefined);
-//=> {foo: 0, bar: 1} 
+//=> {foo: 0, bar: 1}
 ```
 
 **objectAssign(target, source, [source, ...])**

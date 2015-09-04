@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '0.2.1',
+    version: '0.2.2',
     // Brief, one-line summary of the package.
     summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
@@ -14,6 +14,7 @@ Package.onUse(function (api) {
         //mixins
         'mixins/autorun.import.jsx',
         'mixins/dualLink.import.jsx',
+        'mixins/subscription.import.jsx',
         //helpers
         'helpers/classnames.import.jsx',
         'helpers/execution-environment.import.jsx',
