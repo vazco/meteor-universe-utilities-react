@@ -2,6 +2,7 @@ const DualLinkMixin = {
     componentWillMount () {
         this._dualLinks = {};
     },
+
     dualLink (linkName = 'default') {
         if (this._dualLinks[linkName]) {
             // get DualLink from cache
@@ -17,11 +18,11 @@ class DualLink {
     constructor (component, name) {
         check(name, String);
 
+        this.name      = name;
         this.component = component;
-        this.name = name;
 
+        this._setState('local',  {});
         this._setState('remote', {});
-        this._setState('local', {});
     }
 
     _getStateName (type) {
@@ -49,19 +50,19 @@ class DualLink {
 
         } else if (field === undefined && value === undefined) {
 
-            // subscribtion helper
+            // subscription helper
 
         } else {
             console.warn('[DualLinkMixin] Invalid set params', {type, field, value});
         }
     }
 
-    getRemote (field) {
-        return field ? UniUtils.get(this._getState('remote'), field) : this._getState('remote');
-    }
-
     getLocal (field) {
         return field ? UniUtils.get(this._getState('local'), field) : this._getState('local');
+    }
+
+    getRemote (field) {
+        return field ? UniUtils.get(this._getState('remote'), field) : this._getState('remote');
     }
 
     get (field) {
@@ -85,28 +86,22 @@ class DualLink {
         return _.isEmpty(this.get());
     }
 
-    setRemote (field, value) {
-        this._setState('remote', field, value);
-    }
-
     setLocal (field, value) {
         this._setState('local', field, value);
     }
 
-    clear (field) {
-        if (field) {
-            this.setLocal(field, {});
-        } else {
-            this.setLocal({});
-        }
+    setRemote (field, value) {
+        this._setState('remote', field, value);
+    }
+
+    clear () {
+        this.setLocal({});
     }
 
     valueLink (field) {
         return {
             value: this.get(field),
-            requestChange: value => {
-                this.setLocal(field, value);
-            }
+            requestChange: value => this.setLocal(field, value)
         };
     }
 }
