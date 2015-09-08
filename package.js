@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '0.2.2',
+    version: '0.3.0',
     // Brief, one-line summary of the package.
     summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
