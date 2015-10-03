@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '0.3.0',
+    version: '0.4.0',
     // Brief, one-line summary of the package.
     summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
@@ -8,8 +8,8 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-    api.versionsFrom('1.1.0.3');
-    api.use('universe:modules@0.4.1');
+    api.versionsFrom('1.2.0.2');
+    api.use('universe:modules@0.5.0-rc1');
     api.addFiles([
         //mixins
         'mixins/autorun.import.jsx',
@@ -23,7 +23,6 @@ Package.onUse(function (api) {
         'helpers/deep-equal.import.jsx',
         'helpers/deep-extend.import.jsx',
         //index
-        'index.import.js',
-        'index.js'
+        'index.import.js'
     ]);
 });
