@@ -1,6 +1,18 @@
 # Universe Utilities for react
 
-## React Mixins
+## Provides meteor react modules for universe:modules
+
+Mapping all available modules like require('react/*') and of course require('react') to system modules.
+
+```
+import React from 'react/addons';
+import AutoFocusMixin from 'react/lib/AutoFocusMixin';
+```
+
+It's useful for importing components from npm by universe:modules-npm.
+Package universe:modules-npm allows to replace npm dependencies onto universe:modules dependencies
+
+## Universe Mixins for React
 
 ### AutorunMixin
 
