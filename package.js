@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '0.5.0',
+    version: '0.5.1',
     // Brief, one-line summary of the package.
     summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
@@ -9,7 +9,7 @@ Package.describe({
 
 Package.onUse(function (api) {
     api.versionsFrom('1.2.0.2');
-    api.use(['universe:modules@0.5.0', 'react-runtime@0.13.3_7']);
+    api.use(['universe:modules@0.5.0', 'react-runtime@0.13.3_7', 'ecmascript@0.1.5']);
     api.addFiles([
         'modules/ReactWithAddons.js',
         //mixins
