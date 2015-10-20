@@ -8,7 +8,9 @@ const SubscriptionMixin = {
     },
 
     subscribe (subscription, ...params) {
-        this.subscriptions[subscription] = Meteor.subscribe(subscription, ...params);
+        this.subscriptions[subscription] = Meteor.subscribe(subscription, ...params, () => {
+            this.forceUpdate();
+        });
     },
 
     subscriptionReady (subscription) {
