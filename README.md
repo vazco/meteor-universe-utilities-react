@@ -236,33 +236,6 @@ classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1
 
 *- based on [JedWatson/classnames](ithub.com/JedWatson/classnames)*
 
-### deepEqual
-
-Node's assert.deepEqual() algorithm as a standalone module.
-*This module is around 5 times faster than wrapping assert.deepEqual() in a try/catch.*
-
-```js
-import {deepEqual} from '{universe:utilities-react}';
-
-console.dir([
-    equal(
-        { a : [ 2, 3 ], b : [ 4 ] },
-        { a : [ 2, 3 ], b : [ 4 ] }
-    ),
-    equal(
-        { x : 5, y : [6] },
-        { x : 5, y : 6 }
-    )
-]);
-```
-
-**deepEqual(a, b, opts)**
-Compare objects a and b, returning whether they are equal according to a recursive equality algorithm.
-
-If opts.strict is true, use strict equality (===) to compare leaf nodes. The default is to use coercive equality (==) because that's how assert.deepEqual() works by default.
-
-*- based on [substack/node-deep-equal](https://github.com/substack/node-deep-equal)*
-
 ### executionEnvironment
 
 Simple helpers around environment with information like:
@@ -320,58 +293,3 @@ cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 
 *- based on [react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
 
-### deepExtend
-
-Recursive object extending.
-
-```javascript
-import {deepExtend} from '{universe:utilities-react}';
-var obj1 = {
-    a: 1,
-    b: 2,
-    d: {
-        a: 1,
-        b: [],
-        c: { test1: 123, test2: 321 }
-    },
-    f: 5,
-    g: 123,
-    i: 321,
-    j: [1, 2]
-};
-var obj2 = {
-    b: 3,
-    c: 5,
-    d: {
-        b: { first: 'one', second: 'two' },
-        c: { test2: 222 }
-    },
-    e: { one: 1, two: 2 },
-    f: [],
-    g: (void 0),
-    h: /abc/g,
-    i: null,
-    j: [3, 4]
-};
-
-deepExtend(obj1, obj2);
-
-console.log(obj1);
-/*
-{ a: 1,
-  b: 3,
-  d:
-   { a: 1,
-     b: { first: 'one', second: 'two' },
-     c: { test1: 123, test2: 222 } },
-  f: null,
-  g: undefined,
-  c: 5,
-  e: { one: 1, two: 2 },
-  h: /abc/g,
-  i: null,
-  j: [3, 4] }
-*/
-```
-
-*- based on [unclechu/node-deep-extend](https://github.com/unclechu/node-deep-extend)*
