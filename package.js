@@ -10,10 +10,10 @@ Package.describe({
 Package.onUse(function (api) {
     api.versionsFrom('1.2.1');
     api.use([
-        'universe:modules@0.6.0',
-        'react-runtime@0.14.1',
-         'ecmascript@0.1.5'
-         ]);
+          'universe:modules@0.6.1',
+          'react-runtime@0.14.1',
+          'ecmascript@0.1.5'
+        ]);
     api.addFiles([
         'modules/ReactWithAddons.js',
         //mixins
