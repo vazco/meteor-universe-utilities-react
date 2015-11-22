@@ -1,11 +1,19 @@
 
 System.registerDynamic('react', [], false, function (require, exports, module) {
-    module.exports = Package['react-runtime'].React;
+    module.exports = React;
+});
+
+System.registerDynamic('react-dom', [], false, function (require, exports, module) {
+    module.exports = ReactDOM;
 });
 
 System.config({
     meta: {
         'react/*': {
+            format: 'register',
+            loader: 'UniverseReactModulesLoader'
+        },
+        'react-dom/*': {
             format: 'register',
             loader: 'UniverseReactModulesLoader'
         }
@@ -33,7 +41,7 @@ UniverseReactModulesLoader = System.newModule({
         return '';
     },
     instantiate ({name}) {
-        return Package['react-runtime'].React.require(name);
+        return React.require(name);
     }
 });
 
