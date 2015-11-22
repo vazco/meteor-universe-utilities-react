@@ -5,7 +5,8 @@
 Mapping all available modules like require('react/*') and of course require('react') to system modules.
 
 ```
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import AutoFocusMixin from 'react/lib/AutoFocusMixin';
 ```
 
