@@ -1,11 +1,6 @@
-
-System.registerDynamic('react', [], false, function (require, exports, module) {
-    module.exports = React;
-});
-
-System.registerDynamic('react-dom', [], false, function (require, exports, module) {
-    module.exports = ReactDOM;
-});
+const p = Package['react-runtime'] || {};
+System.set('react', System.newModule({default: p.React, ...p}));
+System.set('react-dom', System.newModule({default: p.ReactDOM, ...p}));
 
 System.config({
     meta: {
@@ -26,13 +21,11 @@ UniverseReactModulesLoader = System.newModule({
     locate ({name}) {
         return new Promise((resolve, reject) => {
             let [dir] = name.split('/');
-
             // check if we're in valid namespace
             if (dir !== 'react') {
                 reject(new Error('[Universe Modules]: trying to get exported values from invalid package: ' + name));
                 return;
             }
-
             resolve(name);
         });
     },
@@ -47,3 +40,4 @@ UniverseReactModulesLoader = System.newModule({
 
 // Register our loader
 System.set('UniverseReactModulesLoader', UniverseReactModulesLoader);
+
