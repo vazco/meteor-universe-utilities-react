@@ -1,4 +1,3 @@
-const p = Package['react-runtime'] || {};
 System.registerDynamic('react', [], false, function (require, exports, module) {
     module.exports = Package['react-runtime'].React;
 });
