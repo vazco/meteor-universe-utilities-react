@@ -1,6 +1,11 @@
 const p = Package['react-runtime'] || {};
-System.set('react', System.newModule({default: p.React, ...p}));
-System.set('react-dom', System.newModule({default: p.ReactDOM, ...p}));
+System.registerDynamic('react', [], false, function (require, exports, module) {
+    module.exports = Package['react-runtime'].React;
+});
+
+System.registerDynamic('react-dom', [], false, function (require, exports, module) {
+    module.exports = Package['react-runtime'].ReactDOM;
+});
 
 System.config({
     meta: {
