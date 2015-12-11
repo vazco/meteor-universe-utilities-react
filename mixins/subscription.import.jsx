@@ -17,7 +17,7 @@ const SubscriptionMixin = {
     },
 
     subscriptionReady (subscription) {
-        return this.subscriptions[subscription] && this.subscriptions[subscription].each(handle => handle.ready());
+        return this.subscriptions[subscription] && this.subscriptions[subscription].every(handle => handle.ready());
     },
 
     subscriptionsReady () {
