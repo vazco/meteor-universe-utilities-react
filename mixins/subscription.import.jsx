@@ -4,21 +4,24 @@ const SubscriptionMixin = {
     },
 
     componentWillUnmount () {
-        _.each(this.subscriptions, handle => handle.stop());
+        _.each(this.subscriptions, handlers => handlers.forEach(handle => handle.stop()));
     },
 
     subscribe (subscription, ...params) {
-        this.subscriptions[subscription] = Meteor.subscribe(subscription, ...params, () => {
-            this.setState({[`__SubscriptionMixin_${subscription}`]: true});
-        });
+        this.subscriptions[subscription] = this.subscriptions[subscription] || [];
+        this.subscriptions[subscription].push(Meteor.subscribe(subscription, ...params, () => {
+            this.setState({
+                [`__SubscriptionMixin_${subscription}${this.subscriptions[subscription].length}`]: true
+            });
+        }));
     },
 
     subscriptionReady (subscription) {
-        return this.subscriptions[subscription] && this.subscriptions[subscription].ready();
+        return this.subscriptions[subscription] && this.subscriptions[subscription].each(handle => handle.ready());
     },
 
     subscriptionsReady () {
-        return _.all(this.subscriptions, handle => handle.ready());
+        return _.all(this.subscriptions, handlers => handlers.every(handle => handle.ready()));
     }
 };
 
