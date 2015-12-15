@@ -8,31 +8,35 @@ const SubscriptionMixin = {
     },
 
     subscribe (subscription, ...params) {
-        this.subscriptions[subscription] = this.subscriptions[subscription] || {};
-
         const handle = Meteor.subscribe(subscription, ...params, {
             onReady: () => {
                 this.setState({
-                    [`__SubscriptionMixin_${subscription}${handle.subscriptionId}`]: true
+                    [`__SubscriptionMixin_${subscription}_${handle.subscriptionId}`]: 'ready'
                 });
             },
-            onStop: () => {
+
+            onStop: (err) => {
+                console.log('err', err);
                 this.setState({
-                    [`__SubscriptionMixin_${subscription}${handle.subscriptionId}`]: false
+                    [`__SubscriptionMixin_${subscription}_${handle.subscriptionId}`]: 'stopped'
                 });
+
+                delete this.subscriptions[subscription][handle.subscriptionId];
             }
         });
 
+        this.subscriptions[subscription] = this.subscriptions[subscription] || {};
         this.subscriptions[subscription][handle.subscriptionId] = handle;
         return handle;
     },
 
-    subscriptionReady (subscription, id = null) {
+    subscriptionReady (subscription, id) {
         if (id) {
             const handle = this.subscriptions[subscription][id];
             return handle && handle.ready();
         }
-        return this.subscriptions[subscription] && _(this.subscriptions[subscription]).every(handle => handle.ready());
+
+        return _(this.subscriptions[subscription] || {}).every(handle => handle.ready());
     },
 
     subscriptionsReady () {
@@ -43,12 +47,13 @@ const SubscriptionMixin = {
         return _.each(this.subscriptions, handlers => _(handlers).forEach(handle => handle.stop()));
     },
 
-    subscriptionStop (subscription, id = null) {
+    subscriptionStop (subscription, id) {
         if (id) {
             const handle = this.subscriptions[subscription][id];
             return handle && handle.stop();
         }
-        return this.subscriptions[subscription] && _(this.subscriptions[subscription]).every(handle => handle.stop());
+
+        return _(this.subscriptions[subscription] || {}).every(handle => handle.stop());
     }
 };
 
