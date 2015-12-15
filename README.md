@@ -135,11 +135,17 @@ import {AutorunMixin, SubscriptionMixin} from '{universe:utilities-react}';
 // Subscribe for publication
 // this.subscribe(publicationName, ...args)
 //
-// Check for readiness of single subscription
-// this.subscriptionReady(publicationName)
+// Check for readiness of single subscription or selected subscription handler
+// this.subscriptionReady(publicationName[, subscriptionHandlerId])
 //
 // Check for readiness of all subscriptions
 // this.subscriptionsReady()
+//
+// Stops all subscriptions
+// this.subscriptionsStop()
+//
+// Stops one subscription or selected subscription handler
+// this.subscriptionStop(publicationName[, subscriptionHandlerId])
 
 export default React.createClass({
     mixins: [SubscriptionMixin, AutorunMixin],
