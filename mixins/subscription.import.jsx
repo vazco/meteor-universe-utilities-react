@@ -16,7 +16,6 @@ const SubscriptionMixin = {
             },
 
             onStop: (err) => {
-                console.log('err', err);
                 this.setState({
                     [`__SubscriptionMixin_${subscription}_${handle.subscriptionId}`]: 'stopped'
                 });
