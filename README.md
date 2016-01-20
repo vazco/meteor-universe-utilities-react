@@ -1,4 +1,6 @@
-# Universe Utilities for react
+# Universe Utilities for React
+
+# BETA VERSION WORK IN PROGRESS, DOCS MAY BE OUT OF DATE
 
 ## Provides meteor react modules for universe:modules
 

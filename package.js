@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '0.6.2',
+    version: '1.0.0-beta1',
     // Brief, one-line summary of the package.
     summary: 'Universe Utilities for react',
     // URL to the Git repository containing the source code for this package.
@@ -8,26 +8,9 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-    api.versionsFrom('1.2.1');
-    api.use([
-          'universe:modules@0.6.6',
-          'react-runtime@0.14.1',
-          'ecmascript@0.1.5'
-      ]);
-    api.addFiles([
-        'modules/ReactWithAddons.js',
-        //mixins
-        'mixins/autorun.import.jsx',
-        'mixins/dualLink.import.jsx',
-        'mixins/subscription.import.jsx',
-        //helpers
-        'helpers/classnames.import.jsx',
-        'helpers/execution-environment.import.jsx',
-        'helpers/object-assign.import.jsx',
-        'helpers/react-clonewithprops.import.jsx',
-        'helpers/deep-equal.import.jsx',
-        'helpers/deep-extend.import.jsx',
-        //index
-        'index.import.js'
-    ]);
+    api.versionsFrom('METEOR@1.3-modules-beta.4');
+
+    api.use('ecmascript');
+
+    api.mainModule('index.js');
 });

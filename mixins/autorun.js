@@ -1,3 +1,5 @@
+import {Tracker} from 'meteor/tracker';
+
 const AutorunMixin = {
     componentWillMount () {
         for (let method in this) {
