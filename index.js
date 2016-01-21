@@ -13,6 +13,7 @@
 
 import AutorunMixin from './mixins/autorun';
 import SubscriptionMixin from './mixins/subscription';
+import DualLinkMixin from './mixins/dualLink';
 
 
 export {
