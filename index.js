@@ -18,5 +18,6 @@ import DualLinkMixin from './mixins/dualLink';
 
 export {
     AutorunMixin,
-    SubscriptionMixin
+    SubscriptionMixin,
+    DualLinkMixin
 };

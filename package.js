@@ -10,7 +10,10 @@ Package.describe({
 Package.onUse(function (api) {
     api.versionsFrom('METEOR@1.3-modules-beta.4');
 
-    api.use('ecmascript');
+    api.use([
+        'ecmascript',
+        'universe:utilities'
+    ]);
 
     api.mainModule('index.js');
 });
