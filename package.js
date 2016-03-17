@@ -11,6 +11,7 @@ Package.onUse(function (api) {
     api.versionsFrom('METEOR@1.3-beta.11');
 
     api.use([
+        'ejson',
         'ecmascript',
         'universe:utilities'
     ]);
