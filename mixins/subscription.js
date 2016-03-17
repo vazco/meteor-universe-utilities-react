@@ -1,8 +1,13 @@
 import {Meteor} from 'meteor/meteor';
+import {EJSON} from 'meteor/ejson';
 
 const SubscriptionMixin = {
+    getInitialState () {
+        return {};
+    },
     componentWillMount () {
         this.subscriptions = {};
+        this.subKeys = {};
     },
 
     componentWillUnmount () {
@@ -10,6 +15,10 @@ const SubscriptionMixin = {
     },
 
     subscribe (subscription, ...params) {
+        const subKey = `__SubscriptionSubKey_${subscription}_${EJSON.stringify(params)}`;
+        if (this.subKeys[subKey]) {
+            return this.subKeys[subKey];
+        }
         const handle = Meteor.subscribe(subscription, ...params, {
             onReady: () => {
                 this.setState({
@@ -25,6 +34,8 @@ const SubscriptionMixin = {
                 delete this.subscriptions[subscription][handle.subscriptionId];
             }
         });
+
+        this.subKeys[subKey] = handle;
 
         this.subscriptions[subscription] = this.subscriptions[subscription] || {};
         this.subscriptions[subscription][handle.subscriptionId] = handle;
