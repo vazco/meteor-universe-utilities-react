@@ -1,6 +1,10 @@
 import {Meteor} from 'meteor/meteor';
+import {EJSON} from 'meteor/ejson';
 
 const SubscriptionMixin = {
+    getInitialState () {
+        return {};
+    },
     componentWillMount () {
         this.subscriptions = {};
     },
@@ -10,30 +14,29 @@ const SubscriptionMixin = {
     },
 
     subscribe (subscription, ...params) {
+        const handleId = `__SubscriptionMixin_${subscription}_${EJSON.stringify(params)}`;
         const handle = Meteor.subscribe(subscription, ...params, {
             onReady: () => {
-                this.setState({
-                    [`__SubscriptionMixin_${subscription}_${handle.subscriptionId}`]: 'ready'
-                });
+                this.setState({[handleId]: 'ready'});
             },
 
             onStop: (err) => {
-                this.setState({
-                    [`__SubscriptionMixin_${subscription}_${handle.subscriptionId}`]: 'stopped'
-                });
+                this.setState({[handleId]: 'stopped'});
 
-                delete this.subscriptions[subscription][handle.subscriptionId];
+                delete this.subscriptions[subscription][handleId];
             }
         });
 
+
         this.subscriptions[subscription] = this.subscriptions[subscription] || {};
-        this.subscriptions[subscription][handle.subscriptionId] = handle;
+        this.subscriptions[subscription][handleId] = handle;
+
         return handle;
     },
 
-    subscriptionReady (subscription, id) {
-        if (id) {
-            const handle = this.subscriptions[subscription][id];
+    subscriptionReady (subscription, handleId) {
+        if (handleId) {
+            const handle = this.subscriptions[subscription][handleId];
             return handle && handle.ready();
         }
 
@@ -48,9 +51,9 @@ const SubscriptionMixin = {
         return _.each(this.subscriptions, handlers => _(handlers).forEach(handle => handle.stop()));
     },
 
-    subscriptionStop (subscription, id) {
-        if (id) {
-            const handle = this.subscriptions[subscription][id];
+    subscriptionStop (subscription, handleId) {
+        if (handleId) {
+            const handle = this.subscriptions[subscription][handleId];
             return handle && handle.stop();
         }
 
