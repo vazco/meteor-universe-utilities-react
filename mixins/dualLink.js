@@ -1,3 +1,5 @@
+import {UniUtils} from 'meteor/universe:utilities';
+
 const DualLinkMixin = {
     componentWillMount () {
         this._dualLinks = {};

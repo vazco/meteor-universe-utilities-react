@@ -38,6 +38,7 @@ UniverseReactModulesLoader = System.newModule({
         return '';
     },
     instantiate ({name}) {
+
         return React.require(name);
     }
 });
