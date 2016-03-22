@@ -14,10 +14,17 @@ const SubscriptionMixin = {
     },
 
     subscribe (subscription, ...params) {
+        let cb;
+
+        if (Array.isArray(params) && params.length && typeof params[params.length - 1] === 'function') {
+            cb = params.pop();
+        }
+        
         const handleId = `__SubscriptionMixin_${subscription}_${EJSON.stringify(params)}`;
         const handle = Meteor.subscribe(subscription, ...params, {
             onReady: () => {
                 this.setState({[handleId]: 'ready'});
+                cb && cb();
             },
 
             onStop: (err) => {
