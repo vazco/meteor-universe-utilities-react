@@ -6,12 +6,12 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-    api.versionsFrom('METEOR@1.3-beta.11');
+    api.versionsFrom('1.3');
 
     api.use([
         'ejson',
         'ecmascript',
-        'universe:utilities'
+        'universe:utilities@2.3.2'
     ]);
 
     api.mainModule('index.js');
