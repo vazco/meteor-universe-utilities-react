@@ -14,10 +14,12 @@
 import AutorunMixin from './mixins/autorun';
 import SubscriptionMixin from './mixins/subscription';
 import DualLinkMixin from './mixins/dualLink';
+import executionEnvironment from './helpers/execution-environment';
 
 
 export {
     AutorunMixin,
     SubscriptionMixin,
-    DualLinkMixin
+    DualLinkMixin,
+    executionEnvironment
 };

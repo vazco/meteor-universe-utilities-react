@@ -1,3 +1,4 @@
+import React from 'react';
 var hasOwn = Object.prototype.hasOwnProperty
     , version = React.version.split('.').map(parseFloat)
     , RESERVED = {
@@ -27,8 +28,8 @@ export default function cloneWithProps (child, props) {
 
     // 0.12
     else if (version[0] === 0 && version[1] === 12) {
-        MockLegacyFactory.isReactLegacyFactory = true
-        MockLegacyFactory.type = child.type
+        MockLegacyFactory.isReactLegacyFactory = true;
+        MockLegacyFactory.type = child.type;
         return React.createElement(MockLegacyFactory, newProps);
     }
 

@@ -1,26 +1,16 @@
 # Universe Utilities for React
 
-# BETA VERSION WORK IN PROGRESS, DOCS MAY BE OUT OF DATE
-
-## Provides meteor react modules for universe:modules
-
-Mapping all available modules like require('react/*') and of course require('react') to system modules.
-
+## Instalation
+```sh
+ meteor add universe:utilities-react
 ```
-import React from 'react';
-import ReactDOM from 'react-dom';
-import AutoFocusMixin from 'react/lib/AutoFocusMixin';
-```
-
-It's useful for importing components from npm by universe:modules-npm.
-Package universe:modules-npm allows to replace npm dependencies onto universe:modules dependencies
 
 ## Universe Mixins for React
 
 ### AutorunMixin
 
-```js
-import {AutorunMixin} from '{universe:utilities-react}';
+```jsx
+import {AutorunMixin} from 'meteor/universe:utilities-react';
 
 // Any function prefixed with 'autorun' is executed in componentWillMount.
 // It will create Computation object.
@@ -63,8 +53,8 @@ export default React.createClass({
 
 ### DualLinkMixin
 
-```js
-import {DualLinkMixin} from '{universe:utilities-react}';
+```jsx
+import {DualLinkMixin} from 'meteor/universe:utilities-react';
 
 // Create or get dualLink from cache.
 // var dualLink = this.dualLink(name = 'default')
@@ -131,8 +121,8 @@ export React.createClass({
 
 ### SubscriptionMixin
 
-```js
-import {AutorunMixin, SubscriptionMixin} from '{universe:utilities-react}';
+```jsx
+import {AutorunMixin, SubscriptionMixin} from 'meteor/universe:utilities-react';
 
 // Subscribe for publication
 // this.subscribe(publicationName, ...args)
@@ -177,8 +167,8 @@ export default React.createClass({
 
 ### Complete example
 
-```js
-import {AutorunMixin, DualLinkMixin, SubscriptionMixin} from '{universe:utilities-react}';
+```jsx
+import {AutorunMixin, DualLinkMixin, SubscriptionMixin} from 'meteor/universe:utilities-react';
 
 export default React.createClass({
     mixins: [SubscriptionMixin, DualLinkMixin, AutorunMixin],
@@ -224,34 +214,13 @@ export default React.createClass({
 
 ## Helpers
 
-### classNames
-
-A simple utility for conditionally joining classNames together
-
-```js
-import {classNames} from '{universe:utilities-react}';
-
-classNames('foo', 'bar'); // => 'foo bar'
-classNames('foo', { bar: true }); // => 'foo bar'
-classNames({ foo: true }, { bar: true }); // => 'foo bar'
-classNames({ foo: true, bar: true }); // => 'foo bar'
-
-// lots of arguments of various types
-classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }) // => 'foo bar baz quux'
-
-// other falsy values are just ignored
-classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
-```
-
-*- based on [JedWatson/classnames](ithub.com/JedWatson/classnames)*
-
 ### executionEnvironment
 
 Simple helpers around environment with information like:
 canUseDOM, canUseWorkers, canUseEventListeners, canUseViewport
 
-```js
-import {executionEnvironment} from '{universe:utilities-react}';
+```jsx
+import {executionEnvironment} from 'meteor/universe:utilities-react';
 
 console.log(executionEnvironment.canUseDOM);
 console.log(executionEnvironment.canUseWorkers);
@@ -259,46 +228,16 @@ console.log(executionEnvironment.canUseEventListeners);
 console.log(executionEnvironment.canUseViewport);
 ```
 
-### objectAssign
-
-Ponyfill: A polyfill that doesn't overwrite the native method
-
-```js
-import {objectAssign} from '{universe:utilities-react}';
-objectAssign({foo: 0}, {bar: 1});
-//=> {foo: 0, bar: 1}
-
-// multiple sources
-objectAssign({foo: 0}, {bar: 1}, {baz: 2});
-//=> {foo: 0, bar: 1, baz: 2}
-
-// overwrites equal keys
-objectAssign({foo: 0}, {foo: 1}, {foo: 2});
-//=> {foo: 2}
-
-// ignores null and undefined sources
-objectAssign({foo: 0}, null, {bar: 1}, undefined);
-//=> {foo: 0, bar: 1}
-```
-
-**objectAssign(target, source, [source, ...])**
-
-Assigns enumerable own properties of source objects to the target object and returns the target object. Additional source objects will overwrite previous ones.
-
-- more here: ES6 spec - [Object.assign](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign)
-
-*- based on [sindresorhus/object-assign](https://github.com/sindresorhus/object-assign)*
-
 ### cloneWithProps
 
 Stand-alone React cloneWithProps util that works with multiple versions of React
 
-```js
-import {cloneWithProps} from '{universe:utilities-react}';
+```jsx
+import {cloneWithProps} from 'meteor/universe:utilities-react';
 cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 ```
 
-*This is tested with React 0.9 to 0.13, and adds a trivial amount of code to get everything to work.*
+*This is tested with React 0.9 to 0.14, and adds a trivial amount of code to get everything to work.*
 
 *- based on [react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
 

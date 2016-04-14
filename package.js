@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:utilities-react',
-    version: '1.0.0-beta3',
+    version: '1.0.0',
     summary: 'Universe Utilities for react',
     git: 'https://github.com/vazco/meteor-universe-utilities-react'
 });
