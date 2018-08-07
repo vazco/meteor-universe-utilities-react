@@ -1,4 +1,8 @@
-# Universe Utilities for React
+<h1 align="center">
+    <a href="https://github.com/vazco">vazco</a>/Universe Utilities for React
+</h1>
+
+&nbsp;
 
 ## Instalation
 ```sh
@@ -241,3 +245,8 @@ cloneWithProps(<MyComponent oldProp='hi'/> { newProp: 'hello' })
 
 *- based on [react-clonewithprops](https://github.com/jquense/react-clonewithprops)*
 
+## License
+
+<img src="https://vazco.eu/banner.png" align="right">
+
+**Like every package maintained by [Vazco](https://vazco.eu/), Universe Utilities for React is [MIT licensed](https://github.com/vazco/uniforms/blob/master/LICENSE).**
